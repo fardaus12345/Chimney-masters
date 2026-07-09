@@ -1,0 +1,31 @@
+import React from 'react';
+
+/** Underline tabs. items: strings or {id,label}. */
+export function Tabs({ items = [], active, defaultActive, onChange, style }) {
+  const list = items.map(i => (typeof i === 'string' ? { id: i, label: i } : i));
+  const [internal, setInternal] = React.useState(defaultActive ?? (list[0] && list[0].id));
+  const current = active !== undefined ? active : internal;
+  const pick = id => { if (active === undefined) setInternal(id); onChange && onChange(id); };
+  return (
+    <div role="tablist" style={{ display: 'flex', gap: 4, borderBottom: '1px solid var(--border-default)', fontFamily: 'var(--font-display)', ...style }}>
+      {list.map(t => {
+        const on = t.id === current;
+        return (
+          <button
+            key={t.id} role="tab" aria-selected={on}
+            onClick={() => pick(t.id)}
+            style={{
+              background: 'none', border: 'none', cursor: 'pointer',
+              fontFamily: 'inherit', fontWeight: 600, fontSize: 15,
+              color: on ? 'var(--accent)' : 'var(--cm-gray-500)',
+              padding: '12px 16px',
+              borderBottom: on ? '2px solid var(--accent)' : '2px solid transparent',
+              marginBottom: -1,
+              transition: 'color var(--duration-fast)',
+            }}
+          >{t.label}</button>
+        );
+      })}
+    </div>
+  );
+}

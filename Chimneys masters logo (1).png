@@ -1,0 +1,5 @@
+Toggle switch for settings-style booleans.
+
+```jsx
+<Switch label="Text me appointment reminders" defaultChecked />
+```

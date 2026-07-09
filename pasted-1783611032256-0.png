@@ -1,0 +1,12 @@
+import * as React from 'react';
+
+/** Underline tab strip. */
+export interface TabsProps {
+  items?: Array<string | { id: string; label: string }>;
+  active?: string;
+  defaultActive?: string;
+  onChange?: (id: string) => void;
+  style?: React.CSSProperties;
+}
+
+export declare function Tabs(props: TabsProps): JSX.Element;

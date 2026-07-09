@@ -1,0 +1,167 @@
+<!-- @dsCard group="Website" viewport="1280x800" name="Marketing Site" subtitle="Home, service & contact pages — interactive nav" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chimney Masters — Website Kit</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>
+body{margin:0}
+html{scroll-behavior:smooth}
+@keyframes cmKenBurns {
+  0%   { transform: scale(1.08) translate3d(0,0,0); }
+  100% { transform: scale(1.16) translate3d(-1%,-1%,0); }
+}
+.cm-hero-bg {
+  animation: cmKenBurns 20s ease-in-out infinite alternate;
+  transform-origin: center center;
+}
+@keyframes cmFadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.cm-reveal {
+  opacity: 0;
+  animation: cmFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.cm-img-zoom { overflow: hidden; }
+.cm-img-zoom img, .cm-img-zoom > div { transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+.cm-img-zoom:hover img, .cm-img-zoom:hover > div { transform: scale(1.06); }
+.cm-link-underline { position: relative; }
+.cm-link-underline::after {
+  content: ''; position: absolute; left: 0; right: 100%; bottom: 2px; height: 2px;
+  background: currentColor; transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cm-link-underline:hover::after { right: 0; }
+@keyframes cmBadgeSlide {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.cm-badge-track {
+  animation: cmBadgeSlide 22s linear infinite;
+}
+.cm-badge-track:hover {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .cm-hero-bg, .cm-reveal { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .cm-img-zoom img, .cm-img-zoom > div { transition: none !important; }
+  .cm-badge-track { animation: none !important; }
+}
+@media (max-width: 720px) {
+  .cm-trustbar-scroll {
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .cm-trustbar-scroll::-webkit-scrollbar { display: none; }
+}
+@keyframes cmTrustSlide {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.cm-trustbar-track {
+  animation: cmTrustSlide 18s linear infinite;
+}
+.cm-trustbar-track:hover {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .cm-trustbar-track { animation: none !important; }
+}
+@media (max-width: 720px) {
+  .cm-coupon-icon { display: none; }
+}
+
+/* ---------- Responsive layout system ---------- */
+.cm-container { max-width: var(--container-max); margin: 0 auto; box-sizing: border-box; }
+.cm-pad-80 { padding: 80px 24px; }
+.cm-pad-72 { padding: 72px 24px; }
+.cm-pad-64 { padding: 64px 24px; }
+.cm-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); }
+.cm-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); }
+.cm-split { display: grid; grid-template-columns: 1fr 1fr; }
+.cm-split-12 { display: grid; grid-template-columns: 1.2fr 1fr; }
+.cm-split-form { display: grid; grid-template-columns: 1fr 1.3fr; }
+.cm-field-grid { display: grid; grid-template-columns: 1fr 1fr; }
+.cm-footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; }
+.cm-hero { min-height: 82vh; display: flex; align-items: center; }
+
+.cm-nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; color: var(--cm-charcoal-800); }
+.cm-header-cta-label { display: inline; }
+
+@media (max-width: 1100px) {
+  .cm-grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .cm-footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 900px) {
+  .cm-split, .cm-split-form, .cm-split-12 { grid-template-columns: 1fr; }
+  .cm-grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .cm-nav-desktop { display: none !important; }
+  .cm-nav-toggle { display: inline-flex !important; }
+}
+@media (max-width: 640px) {
+  .cm-grid-4, .cm-grid-3 { grid-template-columns: 1fr; }
+  .cm-field-grid { grid-template-columns: 1fr; }
+  .cm-footer-grid { grid-template-columns: 1fr; text-align: left; }
+  .cm-pad-80, .cm-pad-72, .cm-pad-64 { padding: 48px 20px; }
+  .cm-hero { min-height: 92vh; }
+}
+@media (max-width: 420px) {
+  .cm-header-cta-label { display: none; }
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel" src="Shared.jsx"></script>
+<script type="text/babel" src="HomeScreen.jsx"></script>
+<script type="text/babel" src="ServiceScreen.jsx"></script>
+<script type="text/babel" src="ContactScreen.jsx"></script>
+<script type="text/babel">
+function Site() {
+  const [page, setPage] = React.useState(localStorage.getItem('cm-kit-page') || 'Home');
+  const nav = p => {
+    const target = p === 'Services' ? 'Service' : p;
+    setPage(target);
+    localStorage.setItem('cm-kit-page', target);
+    window.scrollTo(0, 0);
+  };
+  const screens = {
+    Home: <HomeScreen onNav={nav} />,
+    Service: <ServiceScreen onNav={nav} />,
+    About: <AboutStub onNav={nav} />,
+    Coupons: <CouponsStub onNav={nav} />,
+    Contact: <ContactScreen onNav={nav} />,
+  };
+  return (
+    <div data-screen-label={page}>
+      <SiteHeader page={page} onNav={nav} />
+      {page === 'Home' && <TrustBar />}
+      {screens[page] || screens.Home}
+      <SiteFooter onNav={nav} />
+    </div>
+  );
+}
+function Stub({ title, note, onNav }) {
+  return (
+    <main style={{ fontFamily: 'var(--font-body)', background: '#fff' }}>
+      <div style={{ maxWidth: 'var(--container-max)', margin: '0 auto', padding: '96px 24px', textAlign: 'center' }}>
+        <h1 style={{ margin: 0, fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 40, color: 'var(--text-heading)' }}>{title}</h1>
+        <p style={{ margin: '14px auto 0', maxWidth: 480, fontSize: 16, lineHeight: 1.6, color: 'var(--text-muted)' }}>{note}</p>
+      </div>
+    </main>
+  );
+}
+function AboutStub({ onNav }) { return <Stub title="About Chimney Masters" note="Intentionally left as a stub — no About-page content was provided. Share the real copy and photos and we'll build it out." onNav={onNav} />; }
+function CouponsStub({ onNav }) { return <Stub title="Coupons" note="Intentionally left as a stub — no coupon inventory was provided beyond the SWEEP50 example on the home page." onNav={onNav} />; }
+ReactDOM.createRoot(document.getElementById('root')).render(<Site/>);
+</script>
+</body>
+</html>

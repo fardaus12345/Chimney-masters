@@ -1,0 +1,5 @@
+Underline tabs for switching content panes (e.g. service categories).
+
+```jsx
+<Tabs items={['Cleaning','Repairs','Installation']} onChange={setTab} />
+```

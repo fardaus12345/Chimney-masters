@@ -1,0 +1,15 @@
+import * as React from 'react';
+
+/** Icon-only square button. */
+export interface IconButtonProps {
+  variant?: 'default' | 'dark' | 'accent';
+  /** Square side in px (min 40 for touch) */
+  size?: number;
+  /** Accessible label — required */
+  label: string;
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
+  onClick?: () => void;
+}
+
+export declare function IconButton(props: IconButtonProps): JSX.Element;

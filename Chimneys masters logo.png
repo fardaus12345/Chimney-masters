@@ -1,0 +1,30 @@
+<!-- @dsCard group="Components" viewport="700x380" name="Forms" subtitle="Input, Select, Checkbox, Radio, Switch" -->
+<!DOCTYPE html>
+<html><head>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>body{margin:0;padding:20px 24px}</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { Input, Select, Checkbox, Radio, Switch } = window.ChimneyMastersDesignSystem_aca12a;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap:16, alignItems:'start'}}>
+    <Input label="Full Name" placeholder="Jane Homeowner" />
+    <Input label="Email" defaultValue="not-an-email" error="Enter a valid email" />
+    <Select label="Service Needed" placeholder="Choose a service" options={['Chimney Sweep','Level 2 Inspection','Masonry Repair','Cap Installation']} />
+    <Input label="Phone" placeholder="(555) 012-3456" hint="We only call about your appointment" />
+    <div style={{display:'flex', flexDirection:'column', gap:12}}>
+      <Checkbox label="Send seasonal maintenance reminders" defaultChecked />
+      <Checkbox label="I agree to the service terms" />
+      <Switch label="Text me when the tech is en route" defaultChecked />
+    </div>
+    <Radio label="Property Type" direction="row" defaultValue="House" options={['House','Townhome','Other']} />
+  </div>
+);
+</script>
+</body></html>

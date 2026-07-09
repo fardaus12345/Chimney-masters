@@ -1,0 +1,21 @@
+import React from 'react';
+
+/** Inline toast/notification bar. tone: success | danger | neutral. */
+export function Toast({ tone = 'success', children, onDismiss, style }) {
+  const tones = {
+    success: { background: 'var(--cm-success-bg)', color: 'var(--cm-success)', border: '1px solid rgba(21,128,61,.25)' },
+    danger:  { background: 'var(--cm-danger-bg)', color: 'var(--cm-danger)', border: '1px solid rgba(185,28,28,.25)' },
+    neutral: { background: 'var(--cm-charcoal-800)', color: '#fff', border: '1px solid transparent' },
+  };
+  return (
+    <div role="status" style={{
+      display: 'inline-flex', alignItems: 'center', gap: 12,
+      fontFamily: 'var(--font-body)', fontWeight: 500, fontSize: 14,
+      padding: '12px 16px', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-md)',
+      ...tones[tone], ...style,
+    }}>
+      {children}
+      {onDismiss && <button onClick={onDismiss} aria-label="Dismiss" style={{ border: 'none', background: 'none', cursor: 'pointer', color: 'inherit', opacity: .7, fontSize: 16, lineHeight: 1, padding: 0 }}>×</button>}
+    </div>
+  );
+}
